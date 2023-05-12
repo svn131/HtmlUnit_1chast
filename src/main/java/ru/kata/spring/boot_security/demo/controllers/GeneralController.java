@@ -24,20 +24,20 @@ import java.util.List;
 
 
 @Controller
-public class generalController {
-    private static final Logger logger = LoggerFactory.getLogger(generalController.class);
+public class GeneralController {
+    private static final Logger logger = LoggerFactory.getLogger(GeneralController.class);
     private final UserService userService;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public generalController(UserService userService, PasswordEncoder passwordEncoder) {
+    public GeneralController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = (BCryptPasswordEncoder)passwordEncoder;
     }
 
 
     @GetMapping("/admin")
-    public String admin(Model model) {
+    public String showAdminPage(Model model) {
         List<User> userList = userService.findAll();
         model.addAttribute("users", userList);
         return "admin";
@@ -45,7 +45,7 @@ public class generalController {
 
 
     @GetMapping("/user")
-    public String user(Model model, Authentication authentication) {
+    public String showUserPage(Model model, Authentication authentication) {
         String username = authentication.getName();
         User user = userService.findByUsername(username);
         model.addAttribute("user", user);

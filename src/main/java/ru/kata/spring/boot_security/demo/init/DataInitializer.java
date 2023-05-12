@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.configs;
+package ru.kata.spring.boot_security.demo.init;
 
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
@@ -45,7 +45,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     @Transactional
-    void createRoleIfNotFound(String name) {
+    private void createRoleIfNotFound(String name) {
         Role role = userService.findRoleByName(name);
         if (role == null) {
             role = new Role();
@@ -55,7 +55,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     @Transactional
-    void createUserIfNotFound(String username, String password, String email, List<String> roles) {
+    private void createUserIfNotFound(String username, String password, String email, List<String> roles) {
         User user = userService.findByUsername(username);
         if (user == null) {
             user = new User();
