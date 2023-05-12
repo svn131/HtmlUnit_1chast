@@ -13,7 +13,7 @@ import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +37,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username);
         if (user == null) {
@@ -50,34 +50,39 @@ public class UserService implements UserDetailsService {
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
     }
-
+@Transactional
     public void createRole(Role role) {
         roleRepository.save(role);
 
     }
-
+@Transactional(readOnly = true)
     public Role findRoleByName(String roleName) {
         return roleRepository.findByName(roleName);
 
     }
-
+@Transactional
     public void createUser(User user) {
         userRepository.save(user);
     }
-
+@Transactional(readOnly = true)
     public List<User> findAll() {
         return userRepository.findAll();
     }
-
+@Transactional
+    public void update (User user){
+        userRepository.save(user);
+    }
+@Transactional
     public User save(User user) {
         return userRepository.save(user);
     }
+@Transactional(readOnly = true)
+public User findById(Long id) {
+    Optional<User> optionalUser = userRepository.findById(id);
+    return optionalUser.isPresent() ? optionalUser.get() : null;
+}
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
-
-
+@Transactional
     public void deleteUser(User user) {
         userRepository.delete(user);
     }

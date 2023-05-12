@@ -1,7 +1,7 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,17 +20,19 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
+@Log4j2
 @Controller
-public class GeneralController {
-    private static final Logger logger = LoggerFactory.getLogger(GeneralController.class);
+public class AdminController {
     private final UserService userService;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public GeneralController(UserService userService, PasswordEncoder passwordEncoder) {
+    public AdminController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = (BCryptPasswordEncoder)passwordEncoder;
     }
@@ -38,19 +40,12 @@ public class GeneralController {
 
     @GetMapping("/admin")
     public String showAdminPage(Model model) {
+        log.info("Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111"+ model+ "22");
         List<User> userList = userService.findAll();
         model.addAttribute("users", userList);
         return "admin";
     }
 
-
-    @GetMapping("/user")
-    public String showUserPage(Model model, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userService.findByUsername(username);
-        model.addAttribute("user", user);
-        return "user";
-    }
 
     @GetMapping("/admin/create")
     public String showCreateUserForm(Model model) {
@@ -60,7 +55,7 @@ public class GeneralController {
 
     @PostMapping("/admin/create")
     public String createUser(@ModelAttribute("user") User user) {
-        List<Role> roles = new ArrayList<>();
+        Set<Role> roles = new HashSet<>();
         Role userRole = userService.findRoleByName("ROLE_USER");
         roles.add(userRole);
         user.setRoles(roles);
@@ -71,14 +66,15 @@ public class GeneralController {
 
     @GetMapping("/admin/edit/{id}")
     public String showEditUserForm(@PathVariable("id") Long id, Model model) {
-        User user = userService.findById(id).orElseThrow(() -> new EntityNotFoundException("User with id " + id + " not found"));
+        User user = userService.findById(id);
         model.addAttribute("user", user);
         return "edit-user-form";
     }
 
     @PostMapping("/admin/edit")
     public String editUser(@ModelAttribute("user") User user) {
-        userService.save(user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.update(user);
         return "redirect:/admin";
     }
 
