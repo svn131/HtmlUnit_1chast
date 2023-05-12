@@ -5,15 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
-import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -50,39 +50,46 @@ public class UserServiceImp implements UserService {
     public Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
     }
-@Transactional
+
+    @Transactional
     public void createRole(Role role) {
         roleRepository.save(role);
 
     }
-@Transactional(readOnly = true)
+
+    @Transactional(readOnly = true)
     public Role findRoleByName(String roleName) {
         return roleRepository.findByName(roleName);
 
     }
-@Transactional
+
+    @Transactional
     public void createUser(User user) {
         userRepository.save(user);
     }
-@Transactional(readOnly = true)
+
+    @Transactional(readOnly = true)
     public List<User> findAll() {
         return userRepository.findAll();
     }
-@Transactional
-    public void update (User user){
+
+    @Transactional
+    public void update(User user) {
         userRepository.save(user);
     }
-@Transactional
+
+    @Transactional
     public User save(User user) {
         return userRepository.save(user);
     }
-@Transactional(readOnly = true)
-public User findById(Long id) {
-    Optional<User> optionalUser = userRepository.findById(id);
-    return optionalUser.isPresent() ? optionalUser.get() : null;
-}
 
-@Transactional
+    @Transactional(readOnly = true)
+    public User findById(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        return optionalUser.isPresent() ? optionalUser.get() : null;
+    }
+
+    @Transactional
     public void deleteUser(User user) {
         userRepository.delete(user);
     }
