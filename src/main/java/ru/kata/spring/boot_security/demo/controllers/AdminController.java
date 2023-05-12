@@ -2,7 +2,6 @@ package ru.kata.spring.boot_security.demo.controllers;
 
 import lombok.extern.log4j.Log4j2;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,9 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
-
-import javax.persistence.EntityNotFoundException;
-import java.util.ArrayList;
+import ru.kata.spring.boot_security.demo.services.UserServiceImp;
 
 import java.util.HashSet;
 import java.util.List;
@@ -40,7 +37,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String showAdminPage(Model model) {
-        log.info("Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111"+ model+ "22");
+        log.info("Admin page requested ");
         List<User> userList = userService.findAll();
         model.addAttribute("users", userList);
         return "admin";

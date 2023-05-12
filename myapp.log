@@ -25205,3 +25205,54 @@ org.hibernate.LazyInitializationException: failed to lazily initialize a collect
 2023-05-13 02:40:03.944  INFO 7284 --- [http-nio-8087-exec-2] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
 2023-05-13 02:40:09.000  INFO 7284 --- [http-nio-8087-exec-6] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
 2023-05-13 02:40:09.103  INFO 7284 --- [http-nio-8087-exec-8] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:54:43.771  INFO 7284 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-13 02:54:43.771  INFO 7284 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-13 02:54:43.787  INFO 7284 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-13 02:54:43.789  INFO 7284 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-13 02:54:48.096  INFO 28112 --- [main] .s.b.d.SpringBootSecurityDemoApplication : Starting SpringBootSecurityDemoApplication using Java 19.0.2 on lan with PID 28112 (C:\PoektyKata\3_1_3ispravlenie\target\classes started by svn13 in C:\PoektyKata\3_1_3ispravlenie)
+2023-05-13 02:54:48.098  INFO 28112 --- [main] .s.b.d.SpringBootSecurityDemoApplication : No active profile set, falling back to default profiles: default
+2023-05-13 02:54:48.521  INFO 28112 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-13 02:54:48.568  INFO 28112 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 2 JPA repository interfaces.
+2023-05-13 02:54:48.955  INFO 28112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8087 (http)
+2023-05-13 02:54:48.963  INFO 28112 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-13 02:54:48.963  INFO 28112 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2023-05-13 02:54:49.039  INFO 28112 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-13 02:54:49.040  INFO 28112 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 909 ms
+2023-05-13 02:54:49.182  INFO 28112 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-13 02:54:49.234  INFO 28112 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2023-05-13 02:54:49.379  INFO 28112 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-13 02:54:49.465  INFO 28112 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-13 02:54:49.655  INFO 28112 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-13 02:54:49.677  INFO 28112 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2023-05-13 02:54:50.157  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-13 02:54:50.157  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : отношение "users_roles" не существует, пропускается
+2023-05-13 02:54:50.157  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-13 02:54:50.157  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : отношение "users_roles" не существует, пропускается
+2023-05-13 02:54:50.158  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-13 02:54:50.158  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : таблица "roles" не существует, пропускается
+2023-05-13 02:54:50.158  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-13 02:54:50.158  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : таблица "users" не существует, пропускается
+2023-05-13 02:54:50.159  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-13 02:54:50.159  WARN 28112 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : таблица "users_roles" не существует, пропускается
+2023-05-13 02:54:50.178  INFO 28112 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-13 02:54:50.184  INFO 28112 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-13 02:54:50.538  WARN 28112 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-13 02:54:50.656  INFO 28112 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7c359808, org.springframework.security.web.context.SecurityContextPersistenceFilter@68543a35, org.springframework.security.web.header.HeaderWriterFilter@b1fa523, org.springframework.security.web.csrf.CsrfFilter@12765ebd, org.springframework.security.web.authentication.logout.LogoutFilter@6d946eee, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7bd7d71c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@8e00c02, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1f013047, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77d3c3d7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@102fd71d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16361e61, org.springframework.security.web.session.SessionManagementFilter@48d464cf, org.springframework.security.web.access.ExceptionTranslationFilter@6d0a4a22, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@176e839e]
+2023-05-13 02:54:50.776  INFO 28112 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-05-13 02:54:50.941  INFO 28112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8087 (http) with context path ''
+2023-05-13 02:54:51.176  INFO 28112 --- [main] .s.b.d.SpringBootSecurityDemoApplication : Started SpringBootSecurityDemoApplication in 3.376 seconds (JVM running for 3.886)
+2023-05-13 02:54:57.558  INFO 28112 --- [http-nio-8087-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-13 02:54:57.558  INFO 28112 --- [http-nio-8087-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-13 02:54:57.559  INFO 28112 --- [http-nio-8087-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-05-13 02:55:00.695  INFO 28112 --- [http-nio-8087-exec-7] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:01.001  INFO 28112 --- [http-nio-8087-exec-8] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:08.641  INFO 28112 --- [http-nio-8087-exec-5] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:08.732  INFO 28112 --- [http-nio-8087-exec-4] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:22.746  INFO 28112 --- [http-nio-8087-exec-1] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:22.854  INFO 28112 --- [http-nio-8087-exec-2] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:28.263  INFO 28112 --- [http-nio-8087-exec-8] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:28.376  INFO 28112 --- [http-nio-8087-exec-9] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:39.922  INFO 28112 --- [http-nio-8087-exec-4] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:40.030  INFO 28112 --- [http-nio-8087-exec-6] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:41.419  INFO 28112 --- [http-nio-8087-exec-9] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
+2023-05-13 02:55:41.518  INFO 28112 --- [http-nio-8087-exec-10] r.k.s.b.d.controllers.AdminController    : Admin page requested 1111111111111111111111111111111111111111111111111111111111111111111111111{}22
