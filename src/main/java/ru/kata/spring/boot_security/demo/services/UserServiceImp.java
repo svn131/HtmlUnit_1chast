@@ -17,6 +17,7 @@ import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -95,4 +96,11 @@ public class UserServiceImp implements UserService {
     }
 
 
+    public Role getOneRole(Long roleId) {
+        return roleRepository.getOne(roleId);
+    }
+
+    public List<Role> findAllRole() {
+        return roleRepository.findAll();
+    }
 }

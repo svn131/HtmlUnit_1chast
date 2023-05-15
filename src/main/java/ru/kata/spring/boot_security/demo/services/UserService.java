@@ -33,4 +33,8 @@ public interface UserService extends UserDetailsService {
     void deleteUser(User user);
 
     User findById(Long id);
+
+    Role getOneRole (Long roleId);
+
+    List<Role> findAllRole ();
 }

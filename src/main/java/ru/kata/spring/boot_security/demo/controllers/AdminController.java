@@ -7,13 +7,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
+import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
 import java.util.HashSet;
@@ -26,11 +24,13 @@ import java.util.Set;
 public class AdminController {
     private final UserService userService;
     private final BCryptPasswordEncoder passwordEncoder;
+    RoleRepository roleRepository;
 
     @Autowired
-    public AdminController(UserService userService, PasswordEncoder passwordEncoder) {
+    public AdminController(UserService userService, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userService = userService;
         this.passwordEncoder = (BCryptPasswordEncoder) passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -45,17 +45,24 @@ public class AdminController {
 
     @GetMapping("/admin/create")
     public String showCreateUserForm(Model model) {
-        model.addAttribute("user", new User());
+        User user = new User();
+        Set<Role> userRoles = new HashSet<>();
+        user.setRoles(userRoles);
+        model.addAttribute("user", user);
+        model.addAttribute("allRoles", userService.findAllRole());
         return "admin-create-user-form";
     }
 
     @PostMapping("/admin/create")
     public String createUser(@ModelAttribute("user") User user) {
+        Set<Role> selectedRoles = user.getRoles();
         Set<Role> roles = new HashSet<>();
-        Role userRole = userService.findRoleByName("ROLE_USER");
-        roles.add(userRole);
+        for (Role role : selectedRoles) {
+            Role selectedRole = userService.getOneRole(role.getId());
+            roles.add(selectedRole);
+        }
         user.setRoles(roles);
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Шифрование пароля
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.save(user);
         return "redirect:/admin";
     }

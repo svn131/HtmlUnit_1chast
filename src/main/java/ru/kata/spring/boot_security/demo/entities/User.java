@@ -45,7 +45,6 @@ public class User implements UserDetails {
     }
 
     @Override
-    @Transactional
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
